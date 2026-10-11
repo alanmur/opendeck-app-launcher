@@ -1,0 +1,297 @@
+:root {
+	--bg: #2d2d2d;
+	--field: #3d3d3d;
+	--field-hover: #474747;
+	--text: #d8d8d8;
+	--muted: #9a9a9a;
+	--line: #454545;
+	--accent: #3b82f6;
+	--error: #f08080;
+	--thumb-bg: #555555;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--text);
+	font: 9pt system-ui, sans-serif;
+}
+
+body {
+	padding: 6px 12px 12px 0;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+.row {
+	display: flex;
+	align-items: flex-start;
+	min-height: 30px;
+	margin: 4px 0;
+}
+
+.label {
+	flex: 0 0 96px;
+	padding: 6px 10px 0 0;
+	text-align: right;
+	color: var(--muted);
+}
+
+.value {
+	flex: 1;
+	min-width: 0;
+	padding-top: 2px;
+}
+
+.inline {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.radios {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding-top: 5px;
+}
+
+.radios label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+}
+
+input[type="text"],
+input[type="search"] {
+	background: var(--field);
+	color: var(--text);
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: 4px 6px;
+	font: inherit;
+	font-size: 10pt;
+	outline: none;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus {
+	border-color: var(--accent);
+}
+
+input[type="text"]:disabled {
+	opacity: 0.4;
+}
+
+input.invalid {
+	border-color: var(--error);
+}
+
+input[type="radio"] {
+	accent-color: var(--accent);
+	margin: 0;
+}
+
+input[type="range"] {
+	flex: 1;
+	accent-color: var(--accent);
+}
+
+.lang {
+	width: 90px;
+}
+
+.color {
+	width: 98px;
+	font-family: monospace !important;
+}
+
+.num {
+	width: 38px;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Colour swatch over a checkerboard so translucency is visible. */
+.swatch {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	border-radius: 3px;
+	border: 1px solid var(--line);
+	cursor: pointer;
+	background: conic-gradient(#999 25%, #ddd 0 50%, #999 0 75%, #ddd 0) 0 0 / 10px 10px;
+	overflow: hidden;
+}
+
+.swatch > span {
+	position: absolute;
+	inset: 0;
+}
+
+.swatch.disabled {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+button {
+	background: var(--field);
+	color: var(--text);
+	border: 1px solid #969696;
+	border-radius: 3px;
+	padding: 4px 12px;
+	font: inherit;
+	font-size: 10pt;
+	cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+	background: var(--field-hover);
+}
+
+button:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+
+button.primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: #fff;
+}
+
+.current {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-top: 4px;
+}
+
+.current img {
+	width: 28px;
+	height: 28px;
+	border-radius: 4px;
+	background: var(--thumb-bg);
+}
+
+.error {
+	margin: 0 0 6px 12px;
+	padding: 6px 8px;
+	color: var(--error);
+	border: 1px solid var(--error);
+	border-radius: 3px;
+}
+
+
+/* ---- application picker ---- */
+
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	display: flex;
+	padding: 8px;
+	background: rgba(0, 0, 0, 0.55);
+}
+
+.dialog {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dialog-head,
+.dialog-foot {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 10px;
+}
+
+.dialog-head {
+	border-bottom: 1px solid var(--line);
+	font-weight: 600;
+}
+
+.dialog-head input {
+	flex: 1;
+	min-width: 0;
+}
+
+.dialog-foot {
+	border-top: 1px solid var(--line);
+}
+
+.dialog-foot .muted {
+	flex: 1;
+}
+
+.app-list {
+	flex: 1;
+	min-height: 60px;
+	margin: 0;
+	padding: 4px;
+	list-style: none;
+	overflow-y: auto;
+	outline: none;
+}
+
+.app-list li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 4px 6px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.app-list li:hover {
+	background: var(--field);
+}
+
+.app-list li[aria-selected="true"] {
+	background: var(--accent);
+	color: #fff;
+}
+
+.app-list img {
+	flex: 0 0 auto;
+	width: 32px;
+	height: 32px;
+	padding: 2px;
+	border-radius: 4px;
+	background: var(--thumb-bg);
+}
+
+.app-list .id {
+	display: block;
+	font-size: 8pt;
+	opacity: 0.6;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #666;
+	border-radius: 4px;
+}

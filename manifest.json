@@ -1,0 +1,42 @@
+{
+	"Name": "App Launch",
+	"Description": "Launch installed desktop applications, with their icons on the key.",
+	"Author": "Caesium Cloud",
+	"Version": "1.0.0.0",
+	"UUID": "cloud.caesium.applaunch",
+	"SDKVersion": 2,
+	"Icon": "icons/plugin",
+	"Category": "App Launch",
+	"CategoryIcon": "icons/category",
+	"CodePathLin": "bin/plugin.py",
+	"CodePaths": {
+		"x86_64-unknown-linux-gnu": "bin/plugin.py",
+		"aarch64-unknown-linux-gnu": "bin/plugin.py"
+	},
+	"OS": [
+		{
+			"Platform": "linux"
+		}
+	],
+	"Software": {
+		"MinimumVersion": "6.4"
+	},
+	"Actions": [
+		{
+			"Name": "Launch Application",
+			"UUID": "cloud.caesium.applaunch.launch",
+			"Icon": "icons/action",
+			"Tooltip": "Launch an installed desktop application",
+			"PropertyInspectorPath": "pi/index.html",
+			"Controllers": ["Keypad"],
+			"SupportedInMultiActions": true,
+			"States": [
+				{
+					"Image": "icons/key",
+					"TitleAlignment": "bottom",
+					"FontSize": 12
+				}
+			]
+		}
+	]
+}

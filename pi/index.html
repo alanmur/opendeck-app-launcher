@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>App Launch</title>
+		<link rel="stylesheet" href="pi.css" />
+		<script src="languages.js"></script>
+		<script src="pi.js"></script>
+	</head>
+	<body>
+		<div id="error" class="error hidden"></div>
+
+		<div class="row">
+			<div class="label">Application</div>
+			<div class="value current">
+				<img id="current-icon" class="hidden" alt="" />
+				<span id="current-name" class="muted">None selected</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="label"></div>
+			<div class="value">
+				<button id="select-app" type="button">Select Application…</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="label"><label for="lang">Language</label></div>
+			<div class="value inline">
+				<input id="lang" class="lang" type="text" spellcheck="false" placeholder="en" />
+				<span id="lang-name" class="muted"></span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="label">Icon colour</div>
+			<div class="value radios">
+				<label><input type="radio" name="mode" value="full" /> Full colour</label>
+				<label><input type="radio" name="mode" value="white" /> White</label>
+				<label><input type="radio" name="mode" value="black" /> Black</label>
+				<label class="inline">
+					<input type="radio" name="mode" value="custom" /> Custom
+					<input id="color" class="color" type="text" spellcheck="false" placeholder="#RRGGBBAA" />
+					<span id="swatch" class="swatch" title="Pick a colour"><span></span></span>
+					<input id="color-picker" type="color" class="hidden" />
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="label"><label for="scale">Image scale</label></div>
+			<div class="value inline">
+				<input id="scale" type="range" min="20" max="100" step="5" />
+				<span id="scale-value" class="num"></span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="label">Label</div>
+			<div class="value radios">
+				<label><input type="radio" name="labels" value="render" /> Render into image</label>
+				<label><input type="radio" name="labels" value="title" /> Set as key title</label>
+			</div>
+		</div>
+
+		<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+			<div class="dialog">
+				<div class="dialog-head">
+					<span id="modal-title">Select Application</span>
+					<input id="search" type="search" placeholder="Search…" spellcheck="false" />
+				</div>
+				<ul id="app-list" class="app-list" role="listbox" tabindex="0"></ul>
+				<div class="dialog-foot">
+					<span id="list-status" class="muted"></span>
+					<button id="cancel" type="button">Cancel</button>
+					<button id="ok" type="button" class="primary" disabled>OK</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
